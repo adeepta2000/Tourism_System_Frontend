@@ -17,7 +17,7 @@ export default function Home() {
 <Layout>
 <div class=" w-full relative">
   <Image 
-  src={"/home.jpg"}
+  src={"/home4.png"}
   height={0}
   width={0}
   alt=""
@@ -25,7 +25,8 @@ export default function Home() {
   className="w-full h-[100vh] opacity-60"
   />
   <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-    <p className=" text-6xl ">hvhvhgvhgvh</p>
+    <p className=" text-5xl ">"Once a year, go someplace</p>
+    <p className=" text-4xl "> you've never been before." - Dalai Lama</p>
   </div>
 
 
