@@ -31,7 +31,7 @@ export default function NavBar() {
   async function fetchData() {
 
     try {
-      const response = await axios.get(process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/getadminby/" + user.email,
+      const response = await axios.get(process.env.NEXT_PUBLIC_API_ENDPOINT + "/employee/getemployee/" + user.email,
 
       );
       const jsonData = response.data;
@@ -50,7 +50,9 @@ export default function NavBar() {
 
   return (
 <>
+
 {jsonData &&
+
     <div className="navbar bg-slate-400">
         <div className="flex-none">
     <button className="btn btn-square btn-ghost">
@@ -59,6 +61,7 @@ export default function NavBar() {
   </div>
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl">Dashboard</a>
+        
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
@@ -67,7 +70,7 @@ export default function NavBar() {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src={process.env.NEXT_PUBLIC_API_ENDPOINT + '/admin/getprofilepic/' + jsonData.filename} />
+              <img src={process.env.NEXT_PUBLIC_API_ENDPOINT + '/employee/getprofilepic/' + jsonData.filename} />
             </div>
           </label>
           <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
