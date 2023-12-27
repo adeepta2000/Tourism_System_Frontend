@@ -54,7 +54,7 @@ import Footer from './Layout/footer';
      
     try {
       await postData()
-      setError("user created successfully");
+      setError("Employee created successfully");
       resetForm();
 
     } catch (e) {
@@ -82,8 +82,8 @@ import Footer from './Layout/footer';
   async function postData() {
     try {
       const formData = new FormData();
-      formData.append('firstName', firstName);
-      formData.append('lastName', lastName);
+      formData.append('firstname', firstName);
+      formData.append('lastname', lastName);
       formData.append('username', username);
       formData.append('email', email);
       formData.append('address', address);
@@ -91,11 +91,18 @@ import Footer from './Layout/footer';
       formData.append('profilepic', file);
       console.log(formData);
 
-      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/admin/createadmin/', formData, {
+      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/employee/createEmployee/', formData, {
        headers: {
          'Content-Type': 'multipart/form-data'
      }
       });
+
+      /*console.log(formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/agent/create`, formData, {
+       headers: {
+         'Content-Type': 'application/json'
+     }
+      });*/
      
       const data = response.data;
       console.log(data);

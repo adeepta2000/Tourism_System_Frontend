@@ -5,36 +5,36 @@ import axios from 'axios';
 import { useAuth } from './utils/authcontext';
 import Link from "next/link"
 import Footer from './Layout/footer';
-
+ 
 const Title = dynamic(() => import('./Layout/title'), {
   ssr: false,
 })
-
-
+ 
+ 
 export default function Login(){
-
+ 
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuth();
-
+ 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
-
+ 
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
-
+ 
   const isValidEmail = (email) => {
     const emailPattern = /^\S+@\S+\.\S+$/;
    return emailPattern.test(email);
     };
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+ 
     if (!email || !password) {
       setError('Email and password are required');
     } else if (!isValidEmail(email)) {
@@ -44,10 +44,10 @@ export default function Login(){
       console.log(res);
     }
   };
-
+ 
   async function doSignIn(email, password) {
     try {
-      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/admin/signin/', {
+      const response = await axios.post(process.env.NEXT_PUBLIC_API_ENDPOINT + '/employee/signin/', {
         email,
         password,
       },
@@ -56,31 +56,39 @@ export default function Login(){
           withCredentials: true
         }
       );
+<<<<<<< HEAD
 
       if (response.data.success == true) {
         console.log("cookie: " + document.cookie);
         login(email, document.cookie);
         router.push('/admindashboard/dashboard');
+=======
+ 
+      if (response.data.success == true) {
+        console.log("cookie: " + document.cookie);
+        login(email, document.cookie);
+        router.push('/Employeedashboard/profileEmployee');
+>>>>>>> bd534bddacacbd58dfe956c9e20509b8489be8f2
       }
       else {
         setError("Invalid user");
       }
-
+ 
       console.log("response: " + response)
-
+ 
       console.log(response.data)
       return response.data;
-
+ 
     } catch (error) {
-
+ 
       console.error('Login failed:', error);
     }
   }
-
-
+ 
+ 
     return(
         <>
-
+ 
 <Title page="Login"> </Title>
          <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="p-8 max-w-md mx-auto bg-white rounded-xl shadow-lg">
@@ -131,7 +139,7 @@ export default function Login(){
         </div>
       </div>
     </div>
-
+ 
     <Footer/>
         </>
     )
