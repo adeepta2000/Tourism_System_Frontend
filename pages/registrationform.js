@@ -48,7 +48,7 @@ import Footer from './Layout/footer';
     e.preventDefault();
     // Perform form validation
     if (!firstName || !lastName || !username || !email || !address || !password || !file) {
-      console.log(firstName, lastName, username, email, address, password, file);
+      //console.log(firstName, lastName, username, email, address, password, file);
       setError('All fields are required');
     } else {
      

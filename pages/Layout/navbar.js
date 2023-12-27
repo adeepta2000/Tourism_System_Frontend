@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from 'next/router';
 import { useAuth } from '../utils/authcontext';
+import Link from "next/link";
 
 export default function NavBar() {
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [jsonData, setJsonData] = useState('')
   const router = useRouter();
   const { user, logout, checkUser } = useAuth();
@@ -52,13 +53,28 @@ export default function NavBar() {
 <>
 {jsonData &&
     <div className="navbar bg-slate-400">
-        <div className="flex-none">
-    <button className="btn btn-square btn-ghost">
+        <div className="flex">
+        <div className="drawer">
+  <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+  <div className="drawer-content">
+    
+    <label htmlFor="my-drawer" className="btn btn-square btn-ghost">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-    </button>
+    </label>
+    </div> 
+  <div className="drawer-side">
+    <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+    <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+      {/* Sidebar content here */}
+      <li><Link href="/admindashboard/profile">Profile</Link></li>
+      <li><Link href="/admindashboard/content">Content</Link></li>
+      
+    </ul>
+  </div>
+</div>
   </div>
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">Dashboard</a>
+       <Link href="dashboard" className="btn btn-ghost normal-case text-xl">Dashboard</Link>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">

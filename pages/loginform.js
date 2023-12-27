@@ -56,11 +56,11 @@ export default function Login(){
           withCredentials: true
         }
       );
-      debugger;
+
       if (response.data.success == true) {
         console.log("cookie: " + document.cookie);
         login(email, document.cookie);
-        router.push('/admindashboard/profile');
+        router.push('/admindashboard/dashboard');
       }
       else {
         setError("Invalid user");

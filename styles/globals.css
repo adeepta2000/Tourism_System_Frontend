@@ -6,3 +6,11 @@
   height:100vh;
   backgroud-Image:"url("./home.jpg")";
 }
+
+.drawer-side {
+  z-index: 1000;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  height: 100%;
+}
